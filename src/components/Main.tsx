@@ -1,5 +1,4 @@
 import React from "react";
-import {} from "react-redux";
 
 function Main() {
   return (
