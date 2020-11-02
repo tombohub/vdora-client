@@ -10,19 +10,6 @@ export default function Login() {
           <div id="logo" className="p-4">
             <img src={logo} alt="logo" className="my-0 mx-auto" />
           </div>
-          <input type="text" />
-          <Form>
-            <Form.Item>
-              <Input placeholder="shmuka username" />
-            </Form.Item>
-            <Form.Item>
-              <Input.Password placeholder="shmuka password" />
-            </Form.Item>
-
-            <Form.Item>
-              <Button type="primary">Que Vdora</Button>
-            </Form.Item>
-          </Form>
         </div>
       </main>
     </>
