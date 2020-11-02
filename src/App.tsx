@@ -8,11 +8,12 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/">
-            <Login />
-          </Route>
           <Route path="/dashboard">
             <Dashboard />
+            <Layout />
+          </Route>
+          <Route path="/">
+            <Login />
           </Route>
         </Switch>
       </BrowserRouter>
