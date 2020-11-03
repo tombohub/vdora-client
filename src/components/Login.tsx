@@ -35,7 +35,7 @@ export default function Login() {
               variant="contained"
               color="primary"
               fullWidth
-              className="my-4"
+              className="my-4 p-3"
             >
               Come come
             </Button>
