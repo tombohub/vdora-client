@@ -1,31 +1,8 @@
 import React from "react";
 import logo from "../assets/images/logo.webp";
 import { TextField, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    marginTop: "25px",
-  },
-}));
 
 export default function Login() {
-  const classes = useStyles();
-
   return (
     <>
       <main className="p-24">
@@ -48,22 +25,20 @@ export default function Login() {
               label="password"
               type="password"
               variant="outlined"
-              className="my-4"
+              margin="normal"
               required
               fullWidth
+              className="my-4"
             />
-            <button className="my-4">
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
-                // style={{ marginTop: "90px" }}
-                className={classes.submit}
-              >
-                Come comed
-              </Button>
-            </button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              className="my-4"
+            >
+              Come come
+            </Button>
           </form>
         </div>
       </main>
