@@ -61,7 +61,7 @@ export default function Login() {
                 // style={{ marginTop: "90px" }}
                 className={classes.submit}
               >
-                Come come
+                Come comed
               </Button>
             </button>
           </form>
