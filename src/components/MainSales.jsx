@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-interface Sale {
-  saleId: number;
-  date: string;
-  SKU: string;
-  product: string;
-  price: number;
-}
-
 function MainSales() {
-  const [sales, setSales] = useState<Sale[]>([]);
+  const [sales, setSales] = useState([]);
 
   // fetch sales
   useEffect(() => {
@@ -22,7 +14,7 @@ function MainSales() {
         },
       })
       .then(res => {
-        const newSales: Sale[] = res.data.results;
+        const newSales = res.data.results;
         setSales(newSales);
       })
       .catch(err => console.error("error:", err));
