@@ -18,8 +18,7 @@
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "tailwindcss": "^1.9.5",
-    "typescript": "^3.7.5"
+    "tailwindcss": "^1.9.5"
   },
   "scripts": {
     "build:tailwind": "tailwindcss build src/assets/css/tailwind.css -o src/assets/css/main.css",
