@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { Context } from "./Context";
+import React from "react";
 
 function Dashboard() {
-  const kok = useContext(Context);
   return (
     <>
-      <div>{kok.count}</div>
+      <div>{}</div>
     </>
   );
 }

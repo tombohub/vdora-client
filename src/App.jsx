@@ -3,14 +3,12 @@ import Layout from "./components/Layout";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Context } from "./components/Context";
+import Provider from "./components/Provider";
 
 function App() {
-  const [count, setCount] = useState(2);
-
   return (
     <>
-      <Context.Provider value={{ count }}>
+      <Provider>
         <BrowserRouter>
           <Switch>
             <Route path="/dashboard">
@@ -22,7 +20,7 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
-      </Context.Provider>
+      </Provider>
     </>
   );
 }

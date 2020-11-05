@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { Context } from "./Provider";
 
+/**
+ * List Sales
+ */
 function MainSales() {
   const [sales, setSales] = useState([]);
+  const auth = useContext(Context);
 
   // fetch sales
   useEffect(() => {
     axios
       .get("http://localhost:8000/sales/", {
         auth: {
-          username: "user",
-          password: "pass",
+          username: auth.username,
+          password: auth.password,
         },
       })
       .then(res => {
