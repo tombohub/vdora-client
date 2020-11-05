@@ -9,28 +9,29 @@ interface Sale {
   price: number;
 }
 
-interface Sales {
-  sales: Sale[];
-}
-
 function MainSales() {
-  const [sales, setSales] = useState<Sales | object[]>([]);
+  const [sales, setSales] = useState<Sale[]>([]);
 
+  // fetch sales
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/sales/`)
+      .get("http://localhost:8000/sales/", {
+        auth: {
+          username: "user",
+          password: "pass",
+        },
+      })
       .then(res => {
-        const newSales: Sales = res.data.results;
-        console.log(newSales);
+        const newSales: Sale[] = res.data.results;
         setSales(newSales);
       })
       .catch(err => console.error("error:", err));
   }, []);
+
   return (
     <div>
-      {/* {sales.map((sale, i) => (
-        <div>{sale.product}</div>
-      ))} */}
+      {sales &&
+        sales.map((sale, i) => <div key={i}>{sale.product}</div>)}
     </div>
   );
 }
