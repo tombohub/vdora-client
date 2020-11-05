@@ -8,7 +8,7 @@ export default function Login() {
       <main className="p-24">
         <div id="container" className="max-w-sm mx-auto">
           <div id="logo">
-            {/* <img src={logo} className="mx-auto" alt="logo" /> */}
+            <img src={logo} className="mx-auto" alt="logo" />
           </div>
           <form action="">
             <TextField
