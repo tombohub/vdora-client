@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "../assets/images/logo.webp";
 
-function SidebarLogo() {
+function Logo() {
   return (
-    <div>
+    <div className="inline-block">
       <img src={logo} alt="project vdora logo" />
     </div>
   );
 }
 
-export default SidebarLogo;
+export default Logo;
