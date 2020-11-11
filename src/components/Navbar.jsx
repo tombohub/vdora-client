@@ -1,19 +1,12 @@
 import React from "react";
 import Logo from "./Logo";
+import { AppBar } from "@material-ui/core";
 
 function Navbar() {
   return (
-    <nav className="border bg-blue-200 h-12 flex">
-      <Logo />
-      <ul className="flex">
-        <li>
-          <a href="#">Sales</a>
-        </li>
-        <li>
-          <a href="#">Inventory</a>
-        </li>
-      </ul>
-    </nav>
+    <AppBar position="static">
+      <span>Vdora Dashboard</span>
+    </AppBar>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Context } from "./Provider";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid, ColDef } from "@material-ui/data-grid";
 
 /**
  * List Sales
@@ -10,12 +10,16 @@ function MainSales() {
   const [sales, setSales] = useState([]);
   const auth = useContext(Context);
   const columns = [
-    { field: "id", headerName: "id" },
-    { field: "date", headerName: "date" },
-    { field: "sku", headerName: "sku" },
-    { field: "product", headerName: "product" },
+    { field: "id", headerName: "id", width: 60 },
+    { field: "date", headerName: "date", width: 130 },
+    { field: "sku", headerName: "sku", width: 120 },
+    { field: "product", headerName: "product", width: 400 },
     { field: "quantity", headerName: "quantity" },
-    { field: "price", headerName: "price" },
+    {
+      field: "price",
+      headerName: "price",
+      valueFormatter: ({ value }) => "$" + value,
+    },
   ];
 
   // fetch sales
@@ -36,11 +40,9 @@ function MainSales() {
 
   return (
     <>
-      <div>
-        {sales &&
-          sales.map((sale, i) => <div key={i}>{sale.product}</div>)}
+      <div style={{ height: "40em" }}>
+        <DataGrid rows={sales} columns={columns} pageSize={10} />
       </div>
-      <DataGrid rows={sales} columns={columns} />
     </>
   );
 }

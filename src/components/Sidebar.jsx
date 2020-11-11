@@ -1,9 +1,11 @@
 import React from "react";
+import Logo from "./Logo";
 import SidebarMenu from "./SidebarMenu";
 
 function Sidebar() {
   return (
-    <aside className="border h-full w-48 bg-yellow-300 p-4">
+    <aside className="w-48 inline ">
+      <Logo />
       <SidebarMenu />
     </aside>
   );
