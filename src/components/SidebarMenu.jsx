@@ -1,30 +1,28 @@
-import React from "react";
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Drawer,
-} from "@material-ui/core";
-import { AttachMoney, Store } from "@material-ui/icons";
+import React, { useContext } from "react";
+import { Menu } from "primereact/menu";
 
 function SidebarMenu() {
-  return (
-    <List>
-      <ListItem button>
-        <ListItemIcon>
-          <AttachMoney />
-        </ListItemIcon>
-        <ListItemText primary="Sales" />
-      </ListItem>
+  const context = useContext();
 
-      <ListItem button>
-        <ListItemIcon>
-          <Store />
-        </ListItemIcon>
-        <ListItemText primary="Inventory" />
-      </ListItem>
-    </List>
+  const menuItems = [
+    {
+      label: "Dashboard",
+      icon: "pi pi-chart-line",
+      url: "/dashboard",
+    },
+    {
+      label: "Sales",
+      icon: "pi pi-dollar",
+    },
+    {
+      label: "Inventory",
+      icon: "pi pi-home",
+    },
+  ];
+  return (
+    <>
+      <Menu model={menuItems} />
+    </>
   );
 }
 

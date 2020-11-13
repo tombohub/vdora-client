@@ -1,6 +1,5 @@
 import React, { FormEvent, useContext, useState } from "react";
 import logo from "../assets/images/logo.webp";
-import { TextField, Button } from "@material-ui/core";
 import { Context } from "./Provider";
 import { useHistory } from "react-router-dom";
 
@@ -34,36 +33,21 @@ export default function Login() {
             <img src={logo} className="mx-auto" alt="logo" />
           </div>
           <form action="" onSubmit={handleSubmit}>
-            <TextField
+            <input
               id="username"
               name="username"
-              label="username"
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
               onChange={e => setUsernameValue(e.target.value)}
             />
-            <TextField
+            <input
               id="password"
               label="password"
               type="password"
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
               className="my-4"
               onChange={e => setPasswordValue(e.target.value)}
             />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-              className="my-4 p-3"
-            >
+            <button type="submit" className="my-4 p-3">
               Come come
-            </Button>
+            </button>
           </form>
         </div>
       </main>

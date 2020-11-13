@@ -1,19 +1,38 @@
 import React from "react";
-import Main from "./Main";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import { Grid, Typography, Paper } from "@material-ui/core";
+import { Chart } from "primereact/chart";
 
-function Dashboard() {
+/**
+ * Initail dashboard data
+ */
+export default function Dashboard() {
+  const data = {
+    labels: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+    ],
+    datasets: [
+      {
+        label: "First Dataset",
+        data: [65, 59, 80, 81, 56, 55, 40],
+        fill: true,
+        borderColor: "#4bc0c0",
+      },
+      {
+        label: "Second Dataset",
+        data: [28, 48, 40, 19, 86, 27, 90],
+        fill: false,
+        borderColor: "#565656",
+      },
+    ],
+  };
   return (
     <>
-      <Navbar />
-      <div className="flex">
-        <Sidebar />
-        <Main />
-      </div>
+      <Chart type="line" data={data} />
     </>
   );
 }
-
-export default Dashboard;

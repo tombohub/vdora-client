@@ -1,12 +1,11 @@
 import React from "react";
 import Logo from "./Logo";
-import { AppBar } from "@material-ui/core";
 
 function Navbar() {
   return (
-    <AppBar position="static">
+    <nav position="static">
       <span>Vdora Dashboard</span>
-    </AppBar>
+    </nav>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
+import Admin from "./components/Admin";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Provider from "./components/Provider";
 
@@ -11,7 +11,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/dashboard">
-              <Dashboard />
+              <Admin />
             </Route>
 
             <Route path="/">
