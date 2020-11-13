@@ -15,8 +15,8 @@ export default function Sales() {
     axios
       .get("http://localhost:8000/sales/", {
         // auth: {
-        //   username: auth.username,
-        //   password: auth.password,
+        //   username: context.username,
+        //   password: context.password,
         // },
       })
       .then(res => {
@@ -35,8 +35,8 @@ export default function Sales() {
         paginator={true}
         rows={10}
       >
-        <Column field="id" header="Id" sortable></Column>
-        <Column field="date" header="Date"></Column>
+        {/* <Column field="id" header="Id" sortable></Column> */}
+        <Column field="date" header="Date" sortable></Column>
         <Column field="sku" header="SKU"></Column>
         <Column field="product" header="Product"></Column>
         <Column field="quantity" header="Quantity"></Column>
