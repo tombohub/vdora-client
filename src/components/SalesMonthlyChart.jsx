@@ -25,7 +25,8 @@ export default function SalesMonthlyChart() {
       },
     ],
   };
-  console.log(chartData);
+
+  // fetch data and save to state
   useEffect(() => {
     axios
       .get("http://localhost:8000/sales/reports/monthly", {

@@ -10,21 +10,24 @@ import { Switch, Route } from "react-router-dom";
 function Main() {
   const context = useContext(Context);
 
-  function renderMain() {
-    switch (context.activeMenu) {
-      case "dashboard":
-        return <Dashboard />;
+  /**
+   * conditional rendering, in case routes not working
+   */
+  // function renderMain() {
+  //   switch (context.activeMenu) {
+  //     case "dashboard":
+  //       return <Dashboard />;
 
-      case "sales":
-        return <Sales />;
+  //     case "sales":
+  //       return <Sales />;
 
-      case "inventory":
-        return "blabla";
+  //     case "inventory":
+  //       return "blabla";
 
-      default:
-        return null;
-    }
-  }
+  //     default:
+  //       return null;
+  //   }
+  // }
 
   return (
     <>

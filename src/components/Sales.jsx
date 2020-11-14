@@ -3,6 +3,8 @@ import axios from "axios";
 import { Context } from "./Provider";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import SalesMonthlyChart from "./SalesMonthlyChart";
+import NooksPayouts from "./NooksPayouts";
 
 /**
  * List Sales
@@ -28,6 +30,8 @@ export default function Sales() {
 
   return (
     <>
+      <SalesMonthlyChart />
+      <NooksPayouts />
       <DataTable
         value={context.sales}
         className="p-datatable-gridlines"
