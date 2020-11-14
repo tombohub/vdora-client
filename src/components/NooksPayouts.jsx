@@ -64,24 +64,21 @@ export default function NooksPayouts() {
   return (
     <>
       <Card title="Nooks Payouts" subTitle="Amount of checks">
-        <div className="flex">
-          <div className="">
-            {payouts.map((payout, i) => (
-              <div key={i}>
-                <p>{payout.payout_date}</p>
-                <p>{payout.sum}</p>
-                <Checkbox
-                  checked={payout.is_picked}
-                  onChange={(e, id) =>
-                    handleChecked(e, payout.payout_id)
-                  }
-                ></Checkbox>
-                <p>{payout.is_picked}</p>
-                <p>{payout.payout_id}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ul className="flex justify-between">
+          {payouts.map((payout, i) => (
+            <li key={i}>
+              <p>{payout.payout_date}</p>
+              <p>{payout.sum + " $"}</p>
+              <Checkbox
+                tooltip="Did you pick up the check?"
+                checked={payout.is_picked}
+                onChange={(e, id) =>
+                  handleChecked(e, payout.payout_id)
+                }
+              ></Checkbox>
+            </li>
+          ))}
+        </ul>
       </Card>
     </>
   );
