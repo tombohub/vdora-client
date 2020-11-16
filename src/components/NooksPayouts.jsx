@@ -63,7 +63,7 @@ export default function NooksPayouts() {
 
   return (
     <>
-      <Card title="Nooks Payouts" subTitle="Amount of checks">
+      <Card title="Nooks Payouts" subTitle="Check amount">
         <ul className="flex justify-between">
           {payouts.map((payout, i) => (
             <li key={i}>

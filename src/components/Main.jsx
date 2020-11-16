@@ -3,6 +3,7 @@ import Sales from "./Sales";
 import Dashboard from "./Dashboard";
 import { Context } from "./Provider";
 import { Switch, Route } from "react-router-dom";
+import Inventory from "./Inventory";
 
 /**
  * Main windows in admin panel, contains components like Sales, Inventory based on route
@@ -36,7 +37,9 @@ function Main() {
           <Route path="/dashboard/sales">
             <Sales />
           </Route>
-          <Route path="/dashboard/inventory">blslls</Route>
+          <Route path="/dashboard/inventory">
+            <Inventory />
+          </Route>
           <Route path="/dashboard">
             <Dashboard />
           </Route>

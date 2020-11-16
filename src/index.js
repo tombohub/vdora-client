@@ -35,7 +35,9 @@ import "primereact/resources/themes/fluent-light/theme.css";
 // import "primereact/resources/themes/luna-pink/theme.css";
 // import "primereact/resources/themes/rhea/theme.css";
 import "primereact/resources/primereact.min.css";
+import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
+import "./assets/css/primereact-responsive-table.css";
 import "./assets/css/main.css";
 
 import App from "./App";

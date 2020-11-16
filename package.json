@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.2.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -14,7 +15,9 @@
     "axios": "^0.21.0",
     "chart.js": "^2.9.4",
     "classnames": "^2.2.6",
+    "graphql": "^15.4.0",
     "number-to-date-month-name": "^1.0.2",
+    "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",
     "primereact": "^5.0.1",
     "react": "^16.14.0",
