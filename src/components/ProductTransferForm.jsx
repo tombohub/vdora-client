@@ -110,10 +110,10 @@ export default function ProductTransferForm() {
         get date() {
           return format("yyyy-MM-dd", date);
         },
-        product: product,
+        productId: product.id,
         quantity: quantity,
-        fromLocation: fromLocation,
-        toLocation: toLocation,
+        fromLocationId: fromLocation.id,
+        toLocationId: toLocation.id,
         note: note,
       })
       .then(res => console.log(res))
