@@ -7,7 +7,6 @@ import { AutoComplete } from "primereact/autocomplete";
 import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
-import { type } from "os";
 
 /**
  * Form for transfering, moving products (stock) from one location to another
@@ -32,7 +31,7 @@ export default function ProductTransferForm() {
   const [date, setDate] = useState();
 
   // note, if any, to describe transfer
-  const [note, setNote] = useState();
+  const [note, setNote] = useState(null);
 
   /* --------------------------- components options --------------------------- */
 
@@ -57,15 +56,15 @@ export default function ProductTransferForm() {
      */
     function handleLocationsResponse(locations) {
       // set locations to state so dropdown is preselected
-      setFromLocation(locations[0].name);
-      setToLocation(locations[1].name);
+      setFromLocation(locations[0]);
+      setToLocation(locations[1]);
 
       // prepare locations to be used as options in Dropdown component. { label: 'label', value: 'value' }
       const newLocationOptions = locations.map(location => ({
         label: location.name,
         value: location.name,
       }));
-      setLocationOptions(newLocationOptions);
+      setLocationOptions(locations);
     }
 
     // fetch list of product locations
@@ -106,17 +105,21 @@ export default function ProductTransferForm() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/inventory/transactions/", {
-        date: (date => format("yyyy-MM-dd", date))(), // because original date is ISO datetim format
+      .post("http://localhost:8000/inventory/product-transfer/", {
+        // because original date is ISO datetime format
+        get date() {
+          return format("yyyy-MM-dd", date);
+        },
+        product: product,
         quantity: quantity,
-        product: product.id,
-        type: "lo",
-        location: "lo",
+        fromLocation: fromLocation,
+        toLocation: toLocation,
         note: note,
       })
       .then(res => console.log(res))
       .catch(err => console.error(err));
   }
+  console.log(format("yyyy-MM-dd", date));
 
   /* --------------------------------- return --------------------------------- */
 
@@ -125,21 +128,17 @@ export default function ProductTransferForm() {
       <form onSubmit={handleSubmit}>
         <Dropdown
           placeholder="Select FROM location"
+          optionLabel="name"
           value={fromLocation}
           options={locationOptions}
           onChange={e => setFromLocation(e.value)}
         />
         <Dropdown
           placeholder="Select TO location"
+          optionLabel="name"
           value={toLocation}
           options={locationOptions}
           onChange={e => setToLocation(e.value)}
-        />
-        <InputNumber
-          value={quantity}
-          onValueChange={e => setQuantity(e.value)}
-          showButtons
-          min={1}
         />
         <AutoComplete
           field="name"
@@ -149,9 +148,15 @@ export default function ProductTransferForm() {
           completeMethod={filterProducts}
           onChange={e => setProduct(e.value)}
         />
+        <InputNumber
+          value={quantity}
+          onValueChange={e => setQuantity(e.value)}
+          showButtons
+          min={1}
+        />
         <InputTextarea
           value={note}
-          onChange={e => setNote(e.value)}
+          onChange={e => setNote(e.target.value)}
         />
         <Calendar
           dateFormat="yy-mm-dd"
