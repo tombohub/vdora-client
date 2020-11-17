@@ -1,26 +1,40 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import format from "date-format";
 import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
 import { AutoComplete } from "primereact/autocomplete";
+import { Calendar } from "primereact/calendar";
+import { Button } from "primereact/button";
+import { InputTextarea } from "primereact/inputtextarea";
+import { type } from "os";
 
 /**
  * Form for transfering, moving products (stock) from one location to another
  * Fetching locations and products from database.
  */
-export default function StockTransferForm() {
-  //
+export default function ProductTransferForm() {
+  /* ------------------------------ transfer data ----------------------------- */
+
   // location from where the product is moved
-  const [fromLocation, setFromLocation] = useState("");
+  const [fromLocation, setFromLocation] = useState({});
 
   // destination where the product is moved to
-  const [toLocation, setToLocation] = useState("");
+  const [toLocation, setToLocation] = useState({});
 
   // product which is being transfered
   const [product, setProduct] = useState("");
 
   // quantity of products moved
   const [quantity, setQuantity] = useState(1);
+
+  // date of product transfer
+  const [date, setDate] = useState();
+
+  // note, if any, to describe transfer
+  const [note, setNote] = useState();
+
+  /* --------------------------- components options --------------------------- */
 
   // options for Dropdown component
   const [locationOptions, setLocationOptions] = useState([]);
@@ -30,6 +44,8 @@ export default function StockTransferForm() {
 
   // filtered products suggestions for Autocomplete component while typing
   const [filteredProducts, setFilteredProducts] = useState([]);
+
+  /* -------------------------------- functions ------------------------------- */
 
   useEffect(() => {
     /**
@@ -58,23 +74,10 @@ export default function StockTransferForm() {
       .then(res => handleLocationsResponse(res.data.results))
       .catch(err => console.error(err));
 
-    /**
-     * turn the products response object into an array of products. Used for autocomplete
-     * component suggestions
-     * @param {response} productsResponse response containing the list of product objects
-     */
-    function handleProductsResponse(productsResponse) {
-      const newProductOptions = productsResponse.map(
-        product => product.name
-      );
-
-      setProductOptions(newProductOptions);
-    }
-
     // fetch list of products
     axios
       .get("http://localhost:8000/inventory/products/")
-      .then(res => handleProductsResponse(res.data.results))
+      .then(res => setProductOptions(res.data.results))
       .catch(err => console.error(err));
   }, []);
 
@@ -90,7 +93,7 @@ export default function StockTransferForm() {
     if (subString !== "") {
       const regex = new RegExp(`${subString}`, "i");
       const newFilteredProducts = productOptions.filter(product =>
-        regex.test(product)
+        regex.test(product.name)
       );
       setFilteredProducts(newFilteredProducts);
     } else {
@@ -98,11 +101,28 @@ export default function StockTransferForm() {
     }
   }
 
+  // form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:8000/inventory/transactions/", {
+        date: (date => format("yyyy-MM-dd", date))(), // because original date is ISO datetim format
+        quantity: quantity,
+        product: product.id,
+        type: "lo",
+        location: "lo",
+        note: note,
+      })
+      .then(res => console.log(res))
+      .catch(err => console.error(err));
+  }
+
   /* --------------------------------- return --------------------------------- */
 
   return (
     <>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <Dropdown
           placeholder="Select FROM location"
           value={fromLocation}
@@ -122,11 +142,24 @@ export default function StockTransferForm() {
           min={1}
         />
         <AutoComplete
+          field="name"
           value={product}
+          placeholder="Product"
           suggestions={filteredProducts}
           completeMethod={filterProducts}
           onChange={e => setProduct(e.value)}
         />
+        <InputTextarea
+          value={note}
+          onChange={e => setNote(e.value)}
+        />
+        <Calendar
+          dateFormat="yy-mm-dd"
+          value={date}
+          onChange={e => setDate(e.value)}
+        />
+
+        <Button label="Submit" icon="pi pi-check" />
       </form>
     </>
   );

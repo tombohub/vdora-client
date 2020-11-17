@@ -1,5 +1,5 @@
 import React from "react";
-import StockTransferForm from "./StockTransferForm";
+import ProductTransferForm from "./ProductTransferForm";
 
 /**
  * Initail dashboard data
@@ -7,7 +7,7 @@ import StockTransferForm from "./StockTransferForm";
 export default function Dashboard() {
   return (
     <>
-      <StockTransferForm />
+      <ProductTransferForm />
     </>
   );
 }
