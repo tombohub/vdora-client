@@ -7,6 +7,7 @@ import { AutoComplete } from "primereact/autocomplete";
 import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
+import { Dialog } from "primereact/dialog";
 
 /**
  * Form for transfering, moving products (stock) from one location to another
@@ -44,6 +45,9 @@ export default function ProductTransferForm() {
   // filtered products suggestions for Autocomplete component while typing
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  // toggle to make form visible or invisible
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
   /* -------------------------------- functions ------------------------------- */
 
   useEffect(() => {
@@ -56,8 +60,8 @@ export default function ProductTransferForm() {
      */
     function handleLocationsResponse(locations) {
       // set locations to state so dropdown is preselected
-      setFromLocation(locations[0]);
-      setToLocation(locations[1]);
+      setFromLocation(locations[1]); // in house
+      setToLocation(locations[0]); // nooks
 
       // prepare locations to be used as options in Dropdown component. { label: 'label', value: 'value' }
       const newLocationOptions = locations.map(location => ({
@@ -119,53 +123,127 @@ export default function ProductTransferForm() {
       .then(res => console.log(res))
       .catch(err => console.error(err));
   }
-  console.log(format("yyyy-MM-dd", date));
 
   /* --------------------------------- return --------------------------------- */
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <Dropdown
-          placeholder="Select FROM location"
-          optionLabel="name"
-          value={fromLocation}
-          options={locationOptions}
-          onChange={e => setFromLocation(e.value)}
-        />
-        <Dropdown
-          placeholder="Select TO location"
-          optionLabel="name"
-          value={toLocation}
-          options={locationOptions}
-          onChange={e => setToLocation(e.value)}
-        />
-        <AutoComplete
-          field="name"
-          value={product}
-          placeholder="Product"
-          suggestions={filteredProducts}
-          completeMethod={filterProducts}
-          onChange={e => setProduct(e.value)}
-        />
-        <InputNumber
-          value={quantity}
-          onValueChange={e => setQuantity(e.value)}
-          showButtons
-          min={1}
-        />
-        <InputTextarea
-          value={note}
-          onChange={e => setNote(e.target.value)}
-        />
-        <Calendar
-          dateFormat="yy-mm-dd"
-          value={date}
-          onChange={e => setDate(e.value)}
-        />
+      <Button
+        label="Product Transfer"
+        onClick={() => setIsFormVisible(true)}
+      />
+      <Dialog
+        className=" lg:w-1/3 sm:w-1/2 w-full"
+        position="top"
+        closable={false}
+        visible={isFormVisible}
+        dismissableMask={true}
+        onHide={() => setIsFormVisible(false)}
+      >
+        <div className="">
+          <form onSubmit={handleSubmit}>
+            <h2 className="text-2xl text-center mb-4">
+              Product transfer
+            </h2>
 
-        <Button label="Submit" icon="pi pi-check" />
-      </form>
+            <section className="flex justify-between my-4">
+              <div className="">
+                <label htmlFor="from-location" className="block">
+                  From
+                </label>
+                <Dropdown
+                  required
+                  id="from-location"
+                  optionLabel="name"
+                  value={fromLocation}
+                  options={locationOptions}
+                  onChange={e => setFromLocation(e.value)}
+                />
+              </div>
+              <div className="">
+                <label htmlFor="to-location" className="block">
+                  To
+                </label>
+                <Dropdown
+                  required
+                  id="to-location"
+                  optionLabel="name"
+                  value={toLocation}
+                  options={locationOptions}
+                  onChange={e => setToLocation(e.value)}
+                />
+              </div>
+            </section>
+
+            <section className="my-4">
+              <label htmlFor="product" className="block">
+                Product
+              </label>
+              <AutoComplete
+                required
+                id="product"
+                field="name"
+                value={product}
+                placeholder="Product"
+                suggestions={filteredProducts}
+                completeMethod={filterProducts}
+                onChange={e => setProduct(e.value)}
+              />
+            </section>
+            <section className="my-4">
+              <label htmlFor="quantity" className="block">
+                Quantity
+              </label>
+              <InputNumber
+                required
+                id="quantity"
+                className="w-full"
+                value={quantity}
+                onValueChange={e => setQuantity(e.value)}
+                showButtons
+                min={1}
+              />
+            </section>
+
+            <section className="my-4">
+              <label htmlFor="note" className="block">
+                Note
+              </label>
+              <InputTextarea
+                id="note"
+                className="w-full"
+                rows="4"
+                value={note}
+                onChange={e => setNote(e.target.value)}
+              />
+            </section>
+
+            <section className="my-4">
+              <label htmlFor="date" className="block">
+                Date
+              </label>
+              <Calendar
+                required
+                id="date"
+                className="w-full"
+                dateFormat="yy-mm-dd"
+                value={date}
+                onChange={e => setDate(e.value)}
+              />
+            </section>
+            <Button
+              label="Cancel"
+              className="p-button-secondary p-button-text"
+              onClick={() => setIsFormVisible(false)}
+            />
+            <Button
+              label="Submit"
+              icon="pi pi-check"
+              className="float-right"
+            />
+          </form>
+        </div>
+      </Dialog>
     </>
   );
 }
