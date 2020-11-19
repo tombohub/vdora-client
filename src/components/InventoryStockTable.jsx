@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { Card } from "primereact/card";
 
 export default function InventoryStockTable() {
   const [stockData, setStockData] = useState();
@@ -14,7 +15,7 @@ export default function InventoryStockTable() {
   }, []);
   return (
     <>
-      <div className="datatable-responsive-demo">
+      <Card className="datatable-responsive-demo m-4">
         <DataTable
           value={stockData}
           className="p-datatable-responsive-demo"
@@ -24,7 +25,7 @@ export default function InventoryStockTable() {
           <Column field="In-house" header="In-house" />
           <Column field="Total" header="Total" />
         </DataTable>
-      </div>
+      </Card>
     </>
   );
 }

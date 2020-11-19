@@ -25,7 +25,7 @@ function SidebarMenu() {
   ];
   return (
     <>
-      <Menu model={menuItems} />
+      <Menu model={menuItems} className="bg-gray-200" />
     </>
   );
 }

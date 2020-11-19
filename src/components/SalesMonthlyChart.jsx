@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Context } from "./Provider";
 import { Chart } from "primereact/chart";
+import { Card } from "primereact/card";
+
 import numtm from "number-to-date-month-name";
 
 /**
  * Component for holding a Chart representing sales by month
  */
-export default function SalesMonthlyChart() {
+export default function SalesMonthlyChart(props) {
   // data for creating a chart
   const [data, setData] = useState([]);
 
@@ -44,7 +46,9 @@ export default function SalesMonthlyChart() {
 
   return (
     <>
-      <Chart type="bar" data={chartData} />
+      <Card title="Monthly Sales" className={props.className}>
+        <Chart type="bar" data={chartData} />
+      </Card>
     </>
   );
 }

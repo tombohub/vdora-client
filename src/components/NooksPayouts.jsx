@@ -3,7 +3,7 @@ import axios from "axios";
 import { Card } from "primereact/card";
 import { Checkbox } from "primereact/checkbox";
 
-export default function NooksPayouts() {
+export default function NooksPayouts(props) {
   // payouts dates and amount data
   const [payouts, setPayouts] = useState([]);
 
@@ -63,7 +63,11 @@ export default function NooksPayouts() {
 
   return (
     <>
-      <Card title="Nooks Payouts" subTitle="Check amount">
+      <Card
+        title="Nooks Payouts"
+        subTitle="Check amount"
+        className={props.className}
+      >
         <ul className="flex justify-between">
           {payouts.map((payout, i) => (
             <li key={i}>

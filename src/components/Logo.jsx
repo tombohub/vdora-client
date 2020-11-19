@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.webp";
 
 function Logo() {
   return (
-    <div className="inline-block">
+    <div className="">
       <img src={logo} alt="project vdora logo" />
     </div>
   );
