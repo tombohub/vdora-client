@@ -15,7 +15,10 @@ export default function InventoryStockTable() {
   }, []);
   return (
     <>
-      <Card className="datatable-responsive-demo m-4">
+      <Card
+        title="Inventory Stock"
+        className="datatable-responsive-demo m-4"
+      >
         <DataTable
           value={stockData}
           className="p-datatable-responsive-demo"

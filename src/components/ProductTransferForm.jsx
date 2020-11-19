@@ -8,6 +8,7 @@ import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dialog } from "primereact/dialog";
+import { Card } from "primereact/card";
 
 /**
  * Form for transfering, moving products (stock) from one location to another
@@ -128,10 +129,13 @@ export default function ProductTransferForm() {
 
   return (
     <>
-      <Button
-        label="Product Transfer"
-        onClick={() => setIsFormVisible(true)}
-      />
+      <Card title="Create Product Transfer" className="w-1/3 m-4">
+        <Button
+          label="Start"
+          onClick={() => setIsFormVisible(true)}
+        />
+      </Card>
+
       <Dialog
         className=" lg:w-1/3 sm:w-1/2 w-full"
         position="top"
