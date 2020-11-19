@@ -1,6 +1,6 @@
 import React, { FormEvent, useContext, useState } from "react";
 import logo from "../assets/images/logo.webp";
-import { Context } from "./Provider";
+import { Context } from "./Provider.jsx";
 import { useHistory } from "react-router-dom";
 
 /**
@@ -17,14 +17,13 @@ export default function Login() {
    * Sets credentials into context and rediect to dashboard
    *
    */
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     auth.setUsername(usernameValue);
     auth.setPassword(passwordValue);
     history.push("/dashboard");
   }
 
-  function handleChange(e) {}
   return (
     <>
       <main className="p-24">
@@ -40,7 +39,6 @@ export default function Login() {
             />
             <input
               id="password"
-              label="password"
               type="password"
               className="my-4"
               onChange={e => setPasswordValue(e.target.value)}

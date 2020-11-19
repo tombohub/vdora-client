@@ -2,7 +2,7 @@ import React from "react";
 import Login from "./components/Login";
 import Admin from "./components/Admin";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Provider from "./components/Provider";
+import Provider from "./components/Provider.jsx";
 import {
   ApolloProvider,
   ApolloClient,

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Menu } from "primereact/menu";
-import { Context } from "./Provider";
+import { Context } from "./Provider.jsx";
 import { useHistory } from "react-router-dom";
 
 function SidebarMenu() {

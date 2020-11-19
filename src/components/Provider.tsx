@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-export const Context = React.createContext("");
+export const Context = React.createContext({
+  setUsername: (username: string) => {},
+  setPassword: (password: string) => {},
+});
 
 function Provider(props) {
   // username for login

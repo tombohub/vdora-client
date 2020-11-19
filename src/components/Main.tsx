@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import Sales from "./Sales";
 import Dashboard from "./Dashboard";
-import { Context } from "./Provider";
 import { Switch, Route } from "react-router-dom";
 import Inventory from "./Inventory";
 
@@ -9,8 +8,6 @@ import Inventory from "./Inventory";
  * Main windows in admin panel, contains components like Sales, Inventory based on route
  */
 function Main() {
-  const context = useContext(Context);
-
   /**
    * conditional rendering, in case routes not working
    */

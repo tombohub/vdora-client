@@ -1,9 +1,8 @@
 import React from "react";
-import Logo from "./Logo";
 
 function Navbar() {
   return (
-    <nav position="static">
+    <nav>
       <span>Vdora Dashboard</span>
     </nav>
   );

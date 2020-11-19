@@ -3,7 +3,11 @@ import axios from "axios";
 import { Card } from "primereact/card";
 import { Checkbox } from "primereact/checkbox";
 
-export default function NooksPayouts(props) {
+interface IProps {
+  className: string;
+}
+
+export default function NooksPayouts(props: IProps) {
   // payouts dates and amount data
   const [payouts, setPayouts] = useState([]);
 
