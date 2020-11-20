@@ -19,8 +19,8 @@ export default function Login() {
    */
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    auth.setUsername(usernameValue);
-    auth.setPassword(passwordValue);
+    // auth.setUsername(usernameValue);
+    // auth.setPassword(passwordValue);
     history.push("/dashboard");
   }
 
