@@ -5,15 +5,25 @@ import { Chart } from "primereact/chart";
 import { Card } from "primereact/card";
 import numtm from "number-to-date-month-name";
 
+/* -------------------------------------------------------------------------- */
+/*                                 Interfaces                                 */
+/* -------------------------------------------------------------------------- */
+
 interface IProps {
   className: string;
 }
+
+interface ISalesData {
+  date__month: string;
+  price__sum: number;
+}
+
 /**
  * Component for holding a Chart representing sales by month
  */
 export default function SalesMonthlyChart(props: IProps) {
   // data for creating a chart
-  const [salesData, setSalesData] = useState([]);
+  const [salesData, setSalesData] = useState<ISalesData[]>([]);
 
   // for getting auth credentials
   const context = useContext(Context);
