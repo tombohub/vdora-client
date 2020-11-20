@@ -1,0 +1,1 @@
+declare module "number-to-date-month-name"

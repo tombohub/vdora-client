@@ -3,25 +3,27 @@ import axios from "axios";
 import { Context } from "./Provider";
 import { Chart } from "primereact/chart";
 import { Card } from "primereact/card";
-
 import numtm from "number-to-date-month-name";
 
+interface IProps {
+  className: string;
+}
 /**
  * Component for holding a Chart representing sales by month
  */
-export default function SalesMonthlyChart(props) {
+export default function SalesMonthlyChart(props: IProps) {
   // data for creating a chart
-  const [data, setData] = useState([]);
+  const [salesData, setSalesData] = useState([]);
 
   // for getting auth credentials
   const context = useContext(Context);
 
   const chartData = {
-    labels: data.map(i => numtm.toMonth(i.date__month)),
+    labels: salesData.map(i => numtm.toMonth(i.date__month)),
     datasets: [
       {
         label: "Monthly Sales",
-        data: data.map(i => i.price__sum),
+        data: salesData.map(i => i.price__sum),
         fill: true,
         borderColor: "#4bc0c0",
       },
@@ -39,7 +41,7 @@ export default function SalesMonthlyChart(props) {
       })
       .then(res => {
         const newData = res.data;
-        setData(newData);
+        setSalesData(newData);
       })
       .catch(err => console.error("error:", err));
   }, []);
