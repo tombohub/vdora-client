@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Context } from "./Provider.jsx";
+import { Context } from "./Provider";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import SalesMonthlyChart from "./SalesMonthlyChart";

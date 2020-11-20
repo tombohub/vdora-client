@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { ReactChild, SetStateAction, useState } from "react";
+
+interface IContext {
+  username: string;
+  setUsername: React.Dispatch<SetStateAction<string>>;
+  password: string;
+  setPassword: React.Dispatch<SetStateAction<string>>;
+  sales: string;
+  setSales: React.Dispatch<SetStateAction<string>>;
+}
+
+interface IProps {
+  children: ReactChild;
+}
 
 export const Context = React.createContext({
+  username: "",
   setUsername: (username: string) => {},
+  password: "",
   setPassword: (password: string) => {},
+  sales: "",
+  setSales: (sales: string) => {},
 });
 
-function Provider(props) {
+function Provider(props: IProps) {
   // username for login
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState<string>("");
 
   // password for login
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState<string>("");
 
   // sales data from backend
-  const [sales, setSales] = useState([]);
-
-  // active state of the 'route' . Because UI framework hides the Menu Items and cannot use
-  // react-router <Link>
-  const [activeMenu, setActiveMenu] = useState("dashboard");
+  const [sales, setSales] = useState<string>("");
 
   return (
     <Context.Provider
@@ -28,8 +41,6 @@ function Provider(props) {
         setPassword,
         sales,
         setSales,
-        activeMenu,
-        setActiveMenu,
       }}
     >
       {props.children}

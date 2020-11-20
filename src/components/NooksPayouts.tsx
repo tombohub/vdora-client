@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
 import { Card } from "primereact/card";
-import { Checkbox } from "primereact/checkbox";
+import { Checkbox, CheckboxProps } from "primereact/checkbox";
 
 interface IProps {
   className: string;
 }
 
+interface IPayout {
+  payout_date: string;
+  is_picked: boolean;
+  payout_id: number;
+  sum: number;
+}
+
 export default function NooksPayouts(props: IProps) {
   // payouts dates and amount data
-  const [payouts, setPayouts] = useState([]);
+  const [payouts, setPayouts] = useState<IPayout[]>([]);
 
   // fetch payouts sum and schedules
   useEffect(() => {
@@ -52,7 +59,7 @@ export default function NooksPayouts(props: IProps) {
    * @param {Event} e checkbox on change event
    * @param {Number} payout_id id of the payout from database nooks_payouts_schedule table
    */
-  function handleChecked(e, payout_id) {
+  function handleChecked(e: CheckboxProps, payout_id: number) {
     console.log(e.checked, payout_id);
     axios
       .patch(
@@ -80,7 +87,7 @@ export default function NooksPayouts(props: IProps) {
               <Checkbox
                 tooltip="Did you pick up the check?"
                 checked={payout.is_picked}
-                onChange={(e, id) =>
+                onChange={(e: CheckboxProps) =>
                   handleChecked(e, payout.payout_id)
                 }
               ></Checkbox>

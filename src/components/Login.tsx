@@ -1,6 +1,6 @@
 import React, { FormEvent, useContext, useState } from "react";
 import logo from "../assets/images/logo.webp";
-import { Context } from "./Provider.jsx";
+import { Context } from "./Provider";
 import { useHistory } from "react-router-dom";
 
 /**

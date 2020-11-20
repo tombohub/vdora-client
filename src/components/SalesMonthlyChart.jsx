@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Context } from "./Provider.jsx";
+import { Context } from "./Provider";
 import { Chart } from "primereact/chart";
 import { Card } from "primereact/card";
 
