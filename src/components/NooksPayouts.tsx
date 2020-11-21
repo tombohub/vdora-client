@@ -21,12 +21,7 @@ export default function NooksPayouts(props: IProps) {
   // fetch payouts sum and schedules
   useEffect(() => {
     axios
-      .get("http://localhost:8000/sales/reports/nooks-payouts", {
-        // auth: {
-        //     username: context.username,
-        //     password: context.password
-        // },
-      })
+      .get("http://localhost:8000/sales/reports/nooks-payouts/")
       .then(res => {
         const newPayouts = res.data;
         setPayouts(newPayouts);
