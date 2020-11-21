@@ -1,11 +1,9 @@
 import React from "react";
-import logo from "../assets/images/logo.webp";
+import logo from "../assets/images/logo.png";
 
 function Logo() {
   return (
-    <div className="">
-      <img src={logo} alt="project vdora logo" />
-    </div>
+    <img src={logo} alt="project vdora logo" className="rounded" />
   );
 }
 

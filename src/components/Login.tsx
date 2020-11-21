@@ -1,8 +1,8 @@
 import React, { FormEvent, useContext, useState } from "react";
-import logo from "../assets/images/logo.webp";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Context } from "./Provider";
+import Logo from "./Logo";
 import { useHistory } from "react-router-dom";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
@@ -44,8 +44,8 @@ export default function Login() {
       <main className="pt-24 bg-gray-100 h-screen">
         <div id="container" className="sm:max-w-sm w-full mx-auto">
           <Card className="p-4">
-            <div id="logo">
-              <img src={logo} className="mx-auto mb-8" alt="logo" />
+            <div className="mb-4">
+              <Logo />
             </div>
             <form
               action=""
