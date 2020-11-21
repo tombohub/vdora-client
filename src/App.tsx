@@ -8,11 +8,15 @@ import {
   ApolloClient,
   InMemoryCache,
 } from "@apollo/client";
+import axios from "axios";
 
 const client = new ApolloClient({
   uri: "http://localhost:8000/graphql",
   cache: new InMemoryCache(),
 });
+
+axios.defaults.baseURL = "http://localhost:8000//";
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
