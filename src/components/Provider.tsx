@@ -1,12 +1,22 @@
 import React, { ReactChild, SetStateAction, useState } from "react";
 
+interface ISale {
+  url: string;
+  id: number;
+  date: string;
+  sku: string;
+  product: string;
+  quantity: string;
+  price: number;
+}
+
 interface IContext {
-  username: string;
-  setUsername: React.Dispatch<SetStateAction<string>>;
-  password: string;
-  setPassword: React.Dispatch<SetStateAction<string>>;
-  sales: string;
-  setSales: React.Dispatch<SetStateAction<string>>;
+  // username: string;
+  // setUsername: React.Dispatch<SetStateAction<string>>;
+  // password: string;
+  // setPassword: React.Dispatch<SetStateAction<string>>;
+  sales: ISale[];
+  setSales: React.Dispatch<SetStateAction<ISale[]>>;
 }
 
 interface IProps {
@@ -14,12 +24,12 @@ interface IProps {
 }
 
 export const Context = React.createContext({
-  username: "",
-  setUsername: (username: string) => {},
-  password: "",
-  setPassword: (password: string) => {},
-  sales: "",
-  setSales: (sales: string) => {},
+  // username: "",
+  // setUsername: (username: string) => {},
+  // password: "",
+  // setPassword: (password: string) => {},
+  sales: [{}],
+  setSales: (sales: ISale[]) => {},
 });
 
 function Provider(props: IProps) {
@@ -30,15 +40,15 @@ function Provider(props: IProps) {
   const [password, setPassword] = useState<string>("");
 
   // sales data from backend
-  const [sales, setSales] = useState<string>("");
+  const [sales, setSales] = useState<ISale[]>([]);
 
   return (
     <Context.Provider
       value={{
-        username,
-        setUsername,
-        password,
-        setPassword,
+        // username,
+        // setUsername,
+        // password,
+        // setPassword,
         sales,
         setSales,
       }}

@@ -1,14 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import format from "date-format";
 import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
-import { AutoComplete } from "primereact/autocomplete";
-import { Calendar } from "primereact/calendar";
+import {
+  AutoComplete,
+  AutoCompleteProps,
+} from "primereact/autocomplete";
+import { Calendar, CalendarProps } from "primereact/calendar";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dialog } from "primereact/dialog";
 import { Card } from "primereact/card";
+
+interface ILocation {
+  id: number;
+  name: string;
+}
+
+interface IProduct {
+  id: number;
+  name: string;
+  size: string | null;
+  color: string | null;
+  sku: string;
+}
+const Product = {
+  id: 2,
+  name: "",
+  size: "",
+  color: "",
+  sku: "",
+};
 
 /**
  * Form for transfering, moving products (stock) from one location to another
@@ -18,33 +41,51 @@ export default function ProductTransferForm() {
   /* ------------------------------ transfer data ----------------------------- */
 
   // location from where the product is moved
-  const [fromLocation, setFromLocation] = useState({});
+  const [fromLocation, setFromLocation] = useState({
+    id: 1,
+    name: "",
+  });
 
   // destination where the product is moved to
-  const [toLocation, setToLocation] = useState({});
+  const [toLocation, setToLocation] = useState({
+    id: 1,
+    name: "",
+  });
 
   // product which is being transfered
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState({
+    id: 1,
+    name: "",
+    size: "",
+    color: "",
+    sku: "",
+  });
 
   // quantity of products moved
   const [quantity, setQuantity] = useState(1);
 
   // date of product transfer
-  const [date, setDate] = useState();
+  const [date, setDate] = useState<Date | Date[]>(new Date());
 
   // note, if any, to describe transfer
-  const [note, setNote] = useState(null);
+  const [note, setNote] = useState<string | null>(null);
 
   /* --------------------------- components options --------------------------- */
 
   // options for Dropdown component
-  const [locationOptions, setLocationOptions] = useState([]);
+  const [locationOptions, setLocationOptions] = useState<
+    ILocation[]
+  >();
 
   // options for Autocomplete component
-  const [productOptions, setProductOptions] = useState([]);
+  const [productOptions, setProductOptions] = useState<IProduct[]>(
+    []
+  );
 
   // filtered products suggestions for Autocomplete component while typing
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState<
+    IProduct[]
+  >([]);
 
   // toggle to make form visible or invisible
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -59,7 +100,7 @@ export default function ProductTransferForm() {
      * update here too.
      * @param {Response} locations API response with list of available locations
      */
-    function handleLocationsResponse(locations) {
+    function handleLocationsResponse(locations: ILocation[]) {
       // set locations to state so dropdown is preselected
       setFromLocation(locations[1]); // in house
       setToLocation(locations[0]); // nooks
@@ -89,7 +130,7 @@ export default function ProductTransferForm() {
    * Filters products based on typing in autocomplete input and sets the product suggestions
    * @param {event} event html event
    */
-  function filterProducts(e) {
+  function filterProducts(e: { query: string }) {
     const subString = e.query;
     //setInputValue(subString);
 
@@ -106,7 +147,7 @@ export default function ProductTransferForm() {
   }
 
   // form submit
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     axios
@@ -184,7 +225,6 @@ export default function ProductTransferForm() {
                 Product
               </label>
               <AutoComplete
-                required
                 id="product"
                 field="name"
                 value={product}
@@ -216,9 +256,9 @@ export default function ProductTransferForm() {
               <InputTextarea
                 id="note"
                 className="w-full"
-                rows="4"
+                rows={4}
                 value={note}
-                onChange={e => setNote(e.target.value)}
+                onChange={e => setNote(e.currentTarget.value)}
               />
             </section>
 

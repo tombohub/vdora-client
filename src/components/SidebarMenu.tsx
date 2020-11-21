@@ -4,7 +4,6 @@ import { Context } from "./Provider";
 import { useHistory } from "react-router-dom";
 
 function SidebarMenu() {
-  const context = useContext(Context);
   const history = useHistory();
   const menuItems = [
     {
