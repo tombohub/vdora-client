@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import cookies from "js-cookie";
 
 import { Context } from "./Provider";
 import { DataTable } from "primereact/datatable";
@@ -24,9 +23,7 @@ export default function Sales() {
         const newSales = res.data.results;
         context.setSales(newSales);
       })
-      .catch(err =>
-        console.error("error:", err, cookies.get("csrftoken"))
-      );
+      .catch(err => console.error(err));
   }, []);
 
   /* --------------------------------- return --------------------------------- */

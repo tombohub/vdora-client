@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Login from "./components/Login";
 import Admin from "./components/Admin";
+import { Context } from "./components/Provider";
+
 import {
   BrowserRouter,
   Switch,
@@ -14,26 +16,37 @@ import {
 } from "@apollo/client";
 import axios from "axios";
 
+/* --------------------------------- apollo --------------------------------- */
 const client = new ApolloClient({
   uri: "http://localhost:8000/graphql",
   cache: new InMemoryCache(),
 });
 
+/* ---------------------------------- axios --------------------------------- */
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.withCredentials = true;
 
 function App() {
+  const context = useContext(Context);
   return (
     <>
       <ApolloProvider client={client}>
         <BrowserRouter>
           <Switch>
-            <Route path="/dashboard">
-              <Admin />
+            <Route path="/dashboard/">
+              {context.isLoggedIn ? (
+                <Admin />
+              ) : (
+                <Redirect to="/login/" />
+              )}
             </Route>
 
             <Route path="/">
-              <Login />
+              {context.isLoggedIn ? (
+                <Redirect to="/dashboard/" />
+              ) : (
+                <Login />
+              )}
             </Route>
           </Switch>
         </BrowserRouter>
