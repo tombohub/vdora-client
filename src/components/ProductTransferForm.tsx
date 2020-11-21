@@ -220,7 +220,7 @@ export default function ProductTransferForm() {
               </div>
             </section>
 
-            <section className="my-4">
+            <section className="my-4 p-fluid">
               <label htmlFor="product" className="block">
                 Product
               </label>
