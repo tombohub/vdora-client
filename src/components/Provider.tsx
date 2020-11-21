@@ -24,31 +24,23 @@ interface IProps {
 }
 
 export const Context = React.createContext({
-  username: "",
-  setUsername: (username: string) => {},
-  password: "",
-  setPassword: (password: string) => {},
+  isLoggedIn: false,
+  setIsLoggedIn: (isLoggedIn: boolean) => {},
   sales: [{}],
   setSales: (sales: ISale[]) => {},
 });
 
 function Provider(props: IProps) {
-  // username for login
-  const [username, setUsername] = useState<string>("");
-
-  // password for login
-  const [password, setPassword] = useState<string>("");
-
+  // is user logged in
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   // sales data from backend
   const [sales, setSales] = useState<ISale[]>([]);
 
   return (
     <Context.Provider
       value={{
-        username,
-        setUsername,
-        password,
-        setPassword,
+        isLoggedIn,
+        setIsLoggedIn,
         sales,
         setSales,
       }}

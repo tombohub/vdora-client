@@ -1,6 +1,7 @@
 import React, { FormEvent, useContext, useState } from "react";
 import logo from "../assets/images/logo.webp";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 import { Context } from "./Provider";
 import { useHistory } from "react-router-dom";
 import { Card } from "primereact/card";
@@ -14,7 +15,7 @@ import { Button } from "primereact/button";
 export default function Login() {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const auth = useContext(Context);
+  const context = useContext(Context);
   const history = useHistory();
 
   /**
@@ -23,9 +24,6 @@ export default function Login() {
    */
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    // auth.setUsername(usernameValue);
-    // auth.setPassword(passwordValue);
-    // history.push("/dashboard");
 
     axios
       .post("http://localhost:8000/login/", {
@@ -33,7 +31,10 @@ export default function Login() {
         password: passwordValue,
       })
       .then(res => {
-        if (res.status === 200) history.push("/dashboard");
+        if (res.status === 200) {
+          context.setIsLoggedIn(true);
+          history.push("/dashboard");
+        }
       })
       .catch(err => console.error(err));
   }

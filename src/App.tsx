@@ -1,8 +1,12 @@
 import React from "react";
 import Login from "./components/Login";
 import Admin from "./components/Admin";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Provider from "./components/Provider";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import {
   ApolloProvider,
   ApolloClient,
@@ -15,26 +19,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-axios.defaults.baseURL = "http://localhost:8000//";
+axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.withCredentials = true;
 
 function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <Provider>
-          <BrowserRouter>
-            <Switch>
-              <Route path="/dashboard">
-                <Admin />
-              </Route>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/dashboard">
+              <Admin />
+            </Route>
 
-              <Route path="/">
-                <Login />
-              </Route>
-            </Switch>
-          </BrowserRouter>
-        </Provider>
+            <Route path="/">
+              <Login />
+            </Route>
+          </Switch>
+        </BrowserRouter>
       </ApolloProvider>
     </>
   );

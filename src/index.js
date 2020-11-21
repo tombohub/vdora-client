@@ -39,12 +39,15 @@ import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
 import "./assets/css/primereact-responsive-table.css";
 import "./assets/css/main.css";
+import Provider from "./components/Provider";
 
 import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

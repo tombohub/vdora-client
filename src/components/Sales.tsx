@@ -19,7 +19,7 @@ export default function Sales() {
   // fetch sales from database
   useEffect(() => {
     axios
-      .get("http://localhost:8000/sales/")
+      .get("sales/")
       .then(res => {
         const newSales = res.data.results;
         context.setSales(newSales);
