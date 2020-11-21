@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import cookies from "js-cookie";
+
 import { Context } from "./Provider";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -13,21 +15,20 @@ import { ScrollPanel } from "primereact/scrollpanel";
  */
 export default function Sales() {
   const context = useContext(Context);
-
+  // axios.defaults.withCredentials = true;
   // fetch sales from database
   useEffect(() => {
     axios
       .get("http://localhost:8000/sales/", {
-        // auth: {
-        //   username: context.username,
-        //   password: context.password,
-        // },
+        withCredentials: true,
       })
       .then(res => {
         const newSales = res.data.results;
         context.setSales(newSales);
       })
-      .catch(err => console.error("error:", err));
+      .catch(err =>
+        console.error("error:", err, cookies.get("csrftoken"))
+      );
   }, []);
 
   /* --------------------------------- return --------------------------------- */

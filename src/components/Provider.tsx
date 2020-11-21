@@ -11,10 +11,10 @@ interface ISale {
 }
 
 interface IContext {
-  // username: string;
-  // setUsername: React.Dispatch<SetStateAction<string>>;
-  // password: string;
-  // setPassword: React.Dispatch<SetStateAction<string>>;
+  username: string;
+  setUsername: React.Dispatch<SetStateAction<string>>;
+  password: string;
+  setPassword: React.Dispatch<SetStateAction<string>>;
   sales: ISale[];
   setSales: React.Dispatch<SetStateAction<ISale[]>>;
 }
@@ -24,10 +24,10 @@ interface IProps {
 }
 
 export const Context = React.createContext({
-  // username: "",
-  // setUsername: (username: string) => {},
-  // password: "",
-  // setPassword: (password: string) => {},
+  username: "",
+  setUsername: (username: string) => {},
+  password: "",
+  setPassword: (password: string) => {},
   sales: [{}],
   setSales: (sales: ISale[]) => {},
 });
@@ -45,10 +45,10 @@ function Provider(props: IProps) {
   return (
     <Context.Provider
       value={{
-        // username,
-        // setUsername,
-        // password,
-        // setPassword,
+        username,
+        setUsername,
+        password,
+        setPassword,
         sales,
         setSales,
       }}
