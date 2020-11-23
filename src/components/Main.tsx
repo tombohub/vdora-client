@@ -4,10 +4,14 @@ import Dashboard from "./Dashboard";
 import { Switch, Route } from "react-router-dom";
 import Inventory from "./Inventory";
 
+interface IProps {
+  className?: string;
+}
+
 /**
  * Main windows in admin panel, contains components like Sales, Inventory based on route
  */
-function Main() {
+function Main(props: IProps) {
   /**
    * conditional rendering, in case routes not working
    */
@@ -29,7 +33,7 @@ function Main() {
 
   return (
     <>
-      <main className="flex-grow bg-gray-100">
+      <main className={props.className}>
         <Switch>
           <Route path="/dashboard/sales">
             <Sales />

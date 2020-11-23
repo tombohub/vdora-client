@@ -55,3 +55,26 @@
     border-bottom: 1px solid var(--surface-d);
   }
 }
+.p-menuitem-text {
+  color: #edf2f7 !important;
+}
+
+.p-menuitem-link:hover {
+  background-color: #2d3748 !important;
+}
+
+.p-menuitem-icon {
+  color: #4f5566 !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  border-color: #498205;
+  background: #498205;
+}
+
+.p-checkbox:not(.p-checkbox-disabled)
+  .p-checkbox-box.p-highlight:hover {
+  border-color: #3b6903;
+  background: #3b6903;
+  color: #ffffff;
+}

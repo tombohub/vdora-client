@@ -25,6 +25,8 @@ const client = new ApolloClient({
 /* ---------------------------------- axios --------------------------------- */
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.withCredentials = true;
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 function App() {
   const context = useContext(Context);
@@ -34,11 +36,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/dashboard/">
-              {context.isLoggedIn ? (
-                <Admin />
-              ) : (
-                <Redirect to="/login/" />
-              )}
+              {context.isLoggedIn ? <Admin /> : <Redirect to="/" />}
             </Route>
 
             <Route path="/">

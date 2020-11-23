@@ -1,4 +1,9 @@
-import React, { FormEvent, useContext, useState } from "react";
+import React, {
+  FormEvent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Context } from "./Provider";
@@ -18,6 +23,16 @@ export default function Login() {
   const context = useContext(Context);
   const history = useHistory();
 
+  // check if user is already logged in
+  useEffect(() => {
+    axios
+      .get("login/")
+      .then(res => {
+        if (res.status === 200) context.setIsLoggedIn(true);
+      })
+      .catch(err => console.error(err));
+  }, [context]);
+
   /**
    * Sets credentials into context and rediect to dashboard
    *
@@ -26,7 +41,7 @@ export default function Login() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/login/", {
+      .post("login/", {
         username: usernameValue,
         password: passwordValue,
       })
@@ -45,7 +60,7 @@ export default function Login() {
         <div id="container" className="sm:max-w-sm w-full mx-auto">
           <Card className="p-4">
             <div className="mb-4">
-              <Logo />
+              <Logo color="dark" />
             </div>
             <form
               action=""

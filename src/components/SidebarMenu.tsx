@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { Menu } from "primereact/menu";
+import { MenuItem } from "primereact/api";
 import { Context } from "./Provider";
 import { useHistory } from "react-router-dom";
 
 function SidebarMenu() {
   const history = useHistory();
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     {
       label: "Dashboard",
       icon: "pi pi-chart-line",
@@ -24,7 +25,10 @@ function SidebarMenu() {
   ];
   return (
     <>
-      <Menu model={menuItems} className="bg-gray-200" />
+      <Menu
+        model={menuItems}
+        className="w-full border-none bg-transparent"
+      />
     </>
   );
 }

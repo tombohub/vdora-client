@@ -3,15 +3,12 @@ import axios from "axios";
 import format from "date-format";
 import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
-import {
-  AutoComplete,
-  AutoCompleteProps,
-} from "primereact/autocomplete";
-import { Calendar, CalendarProps } from "primereact/calendar";
-import { Button } from "primereact/button";
+import { AutoComplete } from "primereact/autocomplete";
+import { Calendar } from "primereact/calendar";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dialog } from "primereact/dialog";
 import { Card } from "primereact/card";
+import { Button } from "primereact/button";
 
 interface ILocation {
   id: number;
@@ -25,13 +22,6 @@ interface IProduct {
   color: string | null;
   sku: string;
 }
-const Product = {
-  id: 2,
-  name: "",
-  size: "",
-  color: "",
-  sku: "",
-};
 
 /**
  * Form for transfering, moving products (stock) from one location to another
@@ -151,7 +141,7 @@ export default function ProductTransferForm() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/inventory/product-transfer/", {
+      .post("inventory/product-transfer/", {
         // because original date is ISO datetime format
         get date() {
           return format("yyyy-MM-dd", date);
@@ -162,7 +152,10 @@ export default function ProductTransferForm() {
         toLocationId: toLocation.id,
         note: note,
       })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        setIsFormVisible(false);
+      })
       .catch(err => console.error(err));
   }
 
@@ -174,6 +167,7 @@ export default function ProductTransferForm() {
         <Button
           label="Start"
           onClick={() => setIsFormVisible(true)}
+          className="p-button-success"
         />
       </Card>
 
@@ -191,6 +185,7 @@ export default function ProductTransferForm() {
               Product transfer
             </h2>
 
+            {/* LOCATIONS */}
             <section className="flex justify-between my-4">
               <div className="">
                 <label htmlFor="from-location" className="block">
@@ -220,6 +215,7 @@ export default function ProductTransferForm() {
               </div>
             </section>
 
+            {/* PRODUCT */}
             <section className="my-4 p-fluid">
               <label htmlFor="product" className="block">
                 Product
@@ -234,6 +230,8 @@ export default function ProductTransferForm() {
                 onChange={e => setProduct(e.value)}
               />
             </section>
+
+            {/* QUANTITY */}
             <section className="my-4">
               <label htmlFor="quantity" className="block">
                 Quantity
@@ -246,9 +244,12 @@ export default function ProductTransferForm() {
                 onValueChange={e => setQuantity(e.value)}
                 showButtons
                 min={1}
+                incrementButtonClassName="p-button-success"
+                decrementButtonClassName="p-button-success"
               />
             </section>
 
+            {/* NOTE */}
             <section className="my-4">
               <label htmlFor="note" className="block">
                 Note
@@ -262,6 +263,7 @@ export default function ProductTransferForm() {
               />
             </section>
 
+            {/* CALENDAR */}
             <section className="my-4">
               <label htmlFor="date" className="block">
                 Date
@@ -275,6 +277,8 @@ export default function ProductTransferForm() {
                 onChange={e => setDate(e.value)}
               />
             </section>
+
+            {/* BUTTONS */}
             <Button
               label="Cancel"
               className="p-button-secondary p-button-text"
@@ -283,7 +287,7 @@ export default function ProductTransferForm() {
             <Button
               label="Submit"
               icon="pi pi-check"
-              className="float-right"
+              className="float-right p-button-success"
             />
           </form>
         </div>
