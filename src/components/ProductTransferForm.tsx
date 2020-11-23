@@ -167,7 +167,6 @@ export default function ProductTransferForm() {
         <Button
           label="Start"
           onClick={() => setIsFormVisible(true)}
-          className="p-button-success"
         />
       </Card>
 
