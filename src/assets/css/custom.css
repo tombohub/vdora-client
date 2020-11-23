@@ -1,3 +1,11 @@
+:root {
+  --lightness: 24%;
+  --goldenrod: 58, 68%;
+
+  --primary: hsl(var(--goldenrod), var(--lightness));
+  --primary-hover: hsl(var(--goldenrod), calc(var(--lightness) - 5%));
+}
+
 .p-menuitem-text {
   color: #edf2f7 !important;
 }
@@ -13,14 +21,14 @@
 /* -------------------------------- CHECKBOX -------------------------------- */
 
 .p-checkbox .p-checkbox-box.p-highlight {
-  border-color: #646215;
-  background: #646215;
+  border-color: var(--primary);
+  background: var(--primary);
 }
 
 .p-checkbox:not(.p-checkbox-disabled)
   .p-checkbox-box.p-highlight:hover {
-  border-color: #46440e;
-  background: #46440e;
+  border-color: var(--primary-hover);
+  background: var(--primary-hover);
   color: #ffffff;
 }
 
@@ -28,14 +36,14 @@
 
 .p-button {
   color: #ffffff;
-  background: #646215;
-  border: 1px solid #646215;
+  background: var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .p-button:enabled:hover {
-  background: #46440e;
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
   color: #ffffff;
-  border-color: #46440e;
 }
 
 /* ---------------------------- RESPONSIVE TABLE ---------------------------- */

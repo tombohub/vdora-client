@@ -10,7 +10,7 @@ import numtm from "number-to-date-month-name";
 /* -------------------------------------------------------------------------- */
 
 interface IProps {
-  className: string;
+  className?: string;
 }
 
 interface ISalesData {
@@ -35,7 +35,8 @@ export default function SalesMonthlyChart(props: IProps) {
         label: "Monthly Sales",
         data: salesData.map(i => i.price__sum),
         fill: true,
-        borderColor: "#4bc0c0",
+        borderColor: "#fff",
+        backgroundColor: "#1B3C41",
       },
     ],
   };
