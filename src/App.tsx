@@ -23,7 +23,7 @@ const client = new ApolloClient({
 });
 
 /* ---------------------------------- axios --------------------------------- */
-axios.defaults.baseURL = "https://vdora.herokuapp.com/";
+axios.defaults.baseURL = process.env.REACT_APP_API_DOMAIN;
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
