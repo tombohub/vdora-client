@@ -2,6 +2,7 @@ import React, { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
 import { Card } from "primereact/card";
 import { Checkbox, CheckboxProps } from "primereact/checkbox";
+import cookies from "js-cookie";
 
 interface IProps {
   className: string;
