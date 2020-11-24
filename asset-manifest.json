@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/vdora-client/static/css/main.74f8e93f.chunk.css",
+    "main.js": "/vdora-client/static/js/main.42ef7016.chunk.js",
+    "main.js.map": "/vdora-client/static/js/main.42ef7016.chunk.js.map",
+    "runtime-main.js": "/vdora-client/static/js/runtime-main.e3ad8bc7.js",
+    "runtime-main.js.map": "/vdora-client/static/js/runtime-main.e3ad8bc7.js.map",
+    "static/css/2.106a4e5c.chunk.css": "/vdora-client/static/css/2.106a4e5c.chunk.css",
+    "static/js/2.f5cfdd84.chunk.js": "/vdora-client/static/js/2.f5cfdd84.chunk.js",
+    "static/js/2.f5cfdd84.chunk.js.map": "/vdora-client/static/js/2.f5cfdd84.chunk.js.map",
+    "index.html": "/vdora-client/index.html",
+    "precache-manifest.4f03f8199c98a8a1dc2c98dea6a30d9e.js": "/vdora-client/precache-manifest.4f03f8199c98a8a1dc2c98dea6a30d9e.js",
+    "service-worker.js": "/vdora-client/service-worker.js",
+    "static/css/2.106a4e5c.chunk.css.map": "/vdora-client/static/css/2.106a4e5c.chunk.css.map",
+    "static/css/main.74f8e93f.chunk.css.map": "/vdora-client/static/css/main.74f8e93f.chunk.css.map",
+    "static/js/2.f5cfdd84.chunk.js.LICENSE.txt": "/vdora-client/static/js/2.f5cfdd84.chunk.js.LICENSE.txt",
+    "static/media/primereact.min.css": "/vdora-client/static/media/color.c7a33805.png",
+    "static/media/primeicons.css": "/vdora-client/static/media/primeicons.79432094.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e3ad8bc7.js",
+    "static/css/2.106a4e5c.chunk.css",
+    "static/js/2.f5cfdd84.chunk.js",
+    "static/css/main.74f8e93f.chunk.css",
+    "static/js/main.42ef7016.chunk.js"
+  ]
+}
