@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "69249f0eddb216e722ba85249658e24b",
+    "revision": "3e97cdc594d5475a823b67a7fd66de05",
     "url": "/vdora-client/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vdora-client/static/css/2.106a4e5c.chunk.css"
   },
   {
-    "revision": "5890da1f68625a2ba6ac",
-    "url": "/vdora-client/static/css/main.74f8e93f.chunk.css"
+    "revision": "df7ca7362ff6f476f6a9",
+    "url": "/vdora-client/static/css/main.82b5d515.chunk.css"
   },
   {
     "revision": "86151967764b94b1e65a",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vdora-client/static/js/2.f5cfdd84.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5890da1f68625a2ba6ac",
-    "url": "/vdora-client/static/js/main.cd79571d.chunk.js"
+    "revision": "df7ca7362ff6f476f6a9",
+    "url": "/vdora-client/static/js/main.0c95a1b0.chunk.js"
   },
   {
     "revision": "fa12f6f3529242565d8d",

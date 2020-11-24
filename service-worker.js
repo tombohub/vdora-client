@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/vdora-client/precache-manifest.6dfdb3d18cf9f938ebcb370aa7d080e4.js"
+  "/vdora-client/precache-manifest.9b8b8a2c64e9fc66bfdf045b8c1d79e0.js"
 );
 
 self.addEventListener('message', (event) => {
