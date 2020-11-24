@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import SidebarMenu from "./SidebarMenu";
-import { Card } from "primereact/card";
+import { Link } from "react-router-dom";
 
 interface IProps {
   className: string;
@@ -15,7 +15,9 @@ function Sidebar(props: IProps) {
       style={props.style}
     >
       <div className="my-4">
-        <Logo className="w-56" color="light" />
+        <Link to="/">
+          <Logo className="w-56" color="light" />
+        </Link>
       </div>
 
       <div className="my-4">
