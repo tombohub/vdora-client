@@ -1,9 +1,10 @@
 :root {
   --lightness: 24%;
   --goldenrod: 58, 68%;
+  --darkcyan: 188, 41%;
 
-  --primary: hsl(var(--goldenrod), var(--lightness));
-  --primary-hover: hsl(var(--goldenrod), calc(var(--lightness) - 5%));
+  --primary: hsl(var(--darkcyan), var(--lightness));
+  --primary-hover: hsl(var(--darkcyan), calc(var(--lightness) - 5%));
 }
 
 .p-menuitem-text {
@@ -27,7 +28,7 @@
 
 .p-checkbox:not(.p-checkbox-disabled)
   .p-checkbox-box.p-highlight:hover {
-  border-color: var(--primary-hover);
+  border-color: var(--primary);
   background: var(--primary-hover);
   color: #ffffff;
 }

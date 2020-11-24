@@ -35,7 +35,7 @@ export default function NooksPayouts(props: IProps) {
    */
   function fetchNooksPayouts() {
     axios
-      .get("http://localhost:8000/sales/reports/nooks-payouts", {
+      .get("sales/reports/nooks-payouts", {
         // auth: {
         //     username: context.username,
         //     password: context.password
@@ -57,12 +57,9 @@ export default function NooksPayouts(props: IProps) {
   function handleChecked(e: CheckboxProps, payout_id: number) {
     console.log(e.checked, payout_id);
     axios
-      .patch(
-        `http://localhost:8000/nooks-payout-schedules/${payout_id}/`,
-        {
-          is_picked: e.checked,
-        }
-      )
+      .patch(`nooks-payout-schedules/${payout_id}/`, {
+        is_picked: e.checked,
+      })
       .then(res => fetchNooksPayouts())
       .catch(err => console.error(err));
   }

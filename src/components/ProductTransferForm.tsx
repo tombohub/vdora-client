@@ -105,13 +105,13 @@ export default function ProductTransferForm() {
 
     // fetch list of product locations
     axios
-      .get("http://localhost:8000/inventory/locations/")
+      .get("inventory/locations/")
       .then(res => handleLocationsResponse(res.data.results))
       .catch(err => console.error(err));
 
     // fetch list of products
     axios
-      .get("http://localhost:8000/inventory/products/")
+      .get("inventory/products/")
       .then(res => setProductOptions(res.data.results))
       .catch(err => console.error(err));
   }, []);

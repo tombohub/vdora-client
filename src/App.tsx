@@ -23,7 +23,7 @@ const client = new ApolloClient({
 });
 
 /* ---------------------------------- axios --------------------------------- */
-axios.defaults.baseURL = "http://localhost:8000/";
+axios.defaults.baseURL = "http://mikaroko.pythonanywhere.com/";
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";

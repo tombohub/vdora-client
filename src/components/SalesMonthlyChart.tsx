@@ -44,7 +44,7 @@ export default function SalesMonthlyChart(props: IProps) {
   // fetch data and save to state
   useEffect(() => {
     axios
-      .get("http://localhost:8000/sales/reports/monthly/")
+      .get("sales/reports/monthly/")
       .then(res => {
         const newData = res.data;
         setSalesData(newData);

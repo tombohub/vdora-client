@@ -9,7 +9,7 @@ export default function InventoryStockTable() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/inventory/reports/stocks/")
+      .get("inventory/reports/stocks/")
       .then(res => setStockData(res.data))
       .catch(err => console.error(err));
   }, []);
