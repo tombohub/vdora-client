@@ -25,9 +25,6 @@ export default function SalesMonthlyChart(props: IProps) {
   // data for creating a chart
   const [salesData, setSalesData] = useState<ISalesData[]>([]);
 
-  // for getting auth credentials
-  const context = useContext(Context);
-
   const chartData = {
     labels: salesData.map(i => numtm.toMonth(i.date__month)),
     datasets: [
@@ -46,7 +43,10 @@ export default function SalesMonthlyChart(props: IProps) {
     axios
       .get("sales/reports/monthly/")
       .then(res => {
-        const newData = res.data;
+        const newData: ISalesData[] = res.data;
+        newData.sort((a, b) =>
+          a.date__month > b.date__month ? 1 : -1
+        );
         setSalesData(newData);
       })
       .catch(err => console.error("error:", err));
