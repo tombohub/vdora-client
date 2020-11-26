@@ -8,6 +8,7 @@ import SalesMonthlyChart from "./SalesMonthlyChart";
 import NooksPayouts from "./NooksPayouts";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
+import ProductSalesChart from "./ProductSalesChart";
 
 /**
  * List Sales
@@ -36,6 +37,10 @@ export default function Sales() {
 
           <NooksPayouts className="w-1/2 m-4" />
         </div>
+        <div className="flex justify-center">
+          {/* The width needs to be less than 100%, otherwise enlrage bug */}
+          <ProductSalesChart className="" style={{ width: "96%" }} />
+        </div>
 
         <Card className="m-4" title="List of Sales">
           <DataTable
@@ -45,7 +50,6 @@ export default function Sales() {
             paginator={true}
             rows={10}
           >
-            {/* <Column field="id" header="Id" sortable></Column> */}
             <Column field="date" header="Date" sortable></Column>
             <Column field="sku" header="SKU"></Column>
             <Column field="product" header="Product"></Column>
