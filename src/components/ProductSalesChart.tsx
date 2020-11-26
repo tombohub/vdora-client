@@ -30,7 +30,11 @@ export default function ProductSalesChart(props: IProps) {
     axios
       .get("sales/product_sales/")
       .then(res => {
-        setProductSales(res.data);
+        const newProductSales: IProductSale[] = res.data;
+        newProductSales.sort((a, b) =>
+          a.product__name > b.product__name ? 1 : -1
+        );
+        setProductSales(newProductSales);
       })
       .catch(err => console.error(err));
   }, []);

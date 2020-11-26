@@ -44,8 +44,7 @@ export default function SalesMonthlyChart(props: IProps) {
       .get("sales/reports/monthly/")
       .then(res => {
         const newData: ISalesData[] = res.data;
-        newData.sort((a, b) =>
-          a.date__month > b.date__month ? 1 : -1
+        newData.sort((a, b) => a.date__month > b.date__month ? 1 : -1
         );
         setSalesData(newData);
       })
