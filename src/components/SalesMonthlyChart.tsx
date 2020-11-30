@@ -4,6 +4,7 @@ import { Context } from "./Provider";
 import { Chart } from "primereact/chart";
 import { Card } from "primereact/card";
 import numtm from "number-to-date-month-name";
+import randomcolor from "randomcolor";
 
 /* -------------------------------------------------------------------------- */
 /*                                 Interfaces                                 */
@@ -15,7 +16,8 @@ interface IProps {
 
 interface ISalesData {
   date__month: string;
-  price__sum: number;
+  Etsy: number;
+  Nooks: number;
 }
 
 /**
@@ -29,13 +31,41 @@ export default function SalesMonthlyChart(props: IProps) {
     labels: salesData.map(i => numtm.toMonth(i.date__month)),
     datasets: [
       {
-        label: "Monthly Sales",
-        data: salesData.map(i => i.price__sum),
-        fill: true,
+        type: "bar",
+        label: "Nooks",
+        data: salesData.map(sale => sale.Nooks),
         borderColor: "#fff",
-        backgroundColor: "#1B3C41",
+        backgroundColor: randomcolor({
+          luminosity: "dark",
+          hue: "green",
+        }),
+      },
+      {
+        type: "bar",
+        label: "Etsy",
+        data: salesData.map(sale => sale.Etsy),
+        borderColor: "#fff",
+        backgroundColor: randomcolor({
+          luminosity: "dark",
+          hue: "#646215",
+        }),
       },
     ],
+  };
+
+  let chartOptions = {
+    scales: {
+      xAxes: [
+        {
+          stacked: true,
+        },
+      ],
+      yAxes: [
+        {
+          stacked: true,
+        },
+      ],
+    },
   };
 
   // fetch data and save to state
@@ -44,7 +74,8 @@ export default function SalesMonthlyChart(props: IProps) {
       .get("sales/reports/monthly/")
       .then(res => {
         const newData: ISalesData[] = res.data;
-        newData.sort((a, b) => a.date__month > b.date__month ? 1 : -1
+        newData.sort((a, b) =>
+          a.date__month > b.date__month ? 1 : -1
         );
         setSalesData(newData);
       })
@@ -54,7 +85,7 @@ export default function SalesMonthlyChart(props: IProps) {
   return (
     <>
       <Card title="Monthly Sales" className={props.className}>
-        <Chart type="bar" data={chartData} />
+        <Chart type="bar" data={chartData} options={chartOptions} />
       </Card>
     </>
   );

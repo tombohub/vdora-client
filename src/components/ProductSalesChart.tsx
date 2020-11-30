@@ -4,8 +4,6 @@ import randomColor from "randomcolor";
 
 import { Chart } from "primereact/chart";
 import { Card } from "primereact/card";
-import { ScrollPanel } from "primereact/scrollpanel";
-import { isPropertySignature } from "typescript";
 
 interface IProductSale {
   product__name: string;
@@ -48,6 +46,7 @@ export default function ProductSalesChart(props: IProps) {
         data: productSales.map(product => product.product__count),
         backgroundColor: randomColor({
           count: productSales.length,
+          luminosity: "dark",
         }),
       },
     ],
