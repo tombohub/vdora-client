@@ -25,7 +25,6 @@ const client = new ApolloClient({
 /* ---------------------------------- axios --------------------------------- */
 
 axios.defaults.baseURL = process.env.REACT_APP_API_DOMAIN;
-axios.defaults.withCredentials = true;
 axios.defaults.headers.common[
   "Authorization"
 ] = `Token ${localStorage.getItem("token")}`;
