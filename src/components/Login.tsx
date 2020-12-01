@@ -26,7 +26,7 @@ export default function Login() {
   // check if user is already logged in
   useEffect(() => {
     axios
-      .get("login/")
+      .get("token/login/")
       .then(res => {
         if (res.status === 200) context.setIsLoggedIn(true);
       })
@@ -41,12 +41,13 @@ export default function Login() {
     e.preventDefault();
 
     axios
-      .post("login/", {
+      .post("token/login/", {
         username: usernameValue,
         password: passwordValue,
       })
       .then(res => {
         if (res.status === 200) {
+          localStorage.setItem("token", res.data.auth_token);
           context.setIsLoggedIn(true);
           history.push("/dashboard");
         }
