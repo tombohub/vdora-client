@@ -1,11 +1,19 @@
 import React, { ReactChild, SetStateAction, useState } from "react";
 
+interface IProduct {
+  url: string;
+  name: string;
+  size: string;
+  color: string;
+  sku: string;
+}
+
 interface ISale {
   url: string;
   id: number;
   date: string;
   sku: string;
-  product: string;
+  product: IProduct;
   quantity: string;
   price: number;
 }
