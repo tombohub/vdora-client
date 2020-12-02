@@ -25,9 +25,11 @@ const client = new ApolloClient({
 /* ---------------------------------- axios --------------------------------- */
 
 axios.defaults.baseURL = process.env.REACT_APP_API_DOMAIN;
-axios.defaults.headers.common[
-  "Authorization"
-] = `Token ${localStorage.getItem("token")}`;
+axios.interceptors.request.use(config => {
+  const token = localStorage.getItem("token");
+  config.headers.Authorization = token ? `Token ${token}` : null;
+  return config;
+});
 
 function App() {
   const context = useContext(Context);
