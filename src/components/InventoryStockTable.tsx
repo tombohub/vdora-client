@@ -20,7 +20,7 @@ export default function InventoryStockTable() {
           value={stockData}
           className=""
           sortField="product__name"
-          sortOrder={-1}
+          sortOrder={1}
         >
           <Column field="product__name" header="Product" sortable />
           <Column field="In-house" header="In-house" />
