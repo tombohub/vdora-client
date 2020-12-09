@@ -18,7 +18,7 @@ export default function InventoryStockTable() {
       <Card title="Inventory Stock" className="m-4">
         <DataTable value={stockData} className="">
           <Column field="product__name" header="Product" sortable />
-          <Column field="Nooks" header="Nooks" />
+          <Column field="Port Hope" header="Nooks" />
           <Column field="In-house" header="In-house" />
           <Column field="Total" header="Total" />
         </DataTable>

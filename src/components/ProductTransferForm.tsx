@@ -136,10 +136,8 @@ export default function ProductTransferForm() {
     }
   }
 
-  // form submit
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-
+  // submit transfer
+  function handleSubmit() {
     axios
       .post("inventory/product-transfer/", {
         // because original date is ISO datetime format
@@ -158,7 +156,6 @@ export default function ProductTransferForm() {
       })
       .catch(err => console.error(err));
   }
-
   /* --------------------------------- return --------------------------------- */
 
   return (
@@ -179,7 +176,8 @@ export default function ProductTransferForm() {
         onHide={() => setIsFormVisible(false)}
       >
         <div className="">
-          <form onSubmit={handleSubmit}>
+          {/* FORM START */}
+          <form onSubmit={e => e.preventDefault()}>
             <h2 className="text-2xl text-center mb-4">
               Product transfer
             </h2>
@@ -287,6 +285,7 @@ export default function ProductTransferForm() {
               label="Submit"
               icon="pi pi-check"
               className="float-right p-button-success"
+              onClick={handleSubmit}
             />
           </form>
         </div>
