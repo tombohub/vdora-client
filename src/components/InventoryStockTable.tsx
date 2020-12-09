@@ -19,7 +19,7 @@ export default function InventoryStockTable() {
         <DataTable value={stockData} className="">
           <Column field="product__name" header="Product" sortable />
           <Column field="In-house" header="In-house" />
-          <Column field="Port Hope" header="Nooks" />
+          <Column field="Port Hope" header="Port Hope" />
           <Column field="Oshawa" header="Oshawa" />
           <Column field="Total" header="Total" />
         </DataTable>
